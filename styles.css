@@ -1,0 +1,174 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Arial", sans-serif;
+  background-color: rgb(35, 17, 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+.floor-grid {
+  display: grid;
+  background-image: url("./assets/wooden_floor.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+.wall-grid {
+  display: grid;
+  background-image: url("./assets/pink_wall.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+.concrete-grid {
+  display: grid;
+  background-image: url("./assets/concrete_wall.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+}
+
+.game-row {
+  display: flex;
+  height: 30px;
+}
+
+.player {
+  width: 350px;
+  height: 512px;
+  background-image: url("./assets/character.png");
+  background-repeat: no-repeat;
+  background-position: 0 0px; /* top-left frame */
+  animation: idleAnimationDown 1s steps(4) infinite;
+  transform: scale(0.15);
+  position: absolute;
+}
+
+.player.moving-down {
+  animation: moveDown 0.5s steps(4) forwards;
+}
+
+.player.moving-up {
+  animation: moveUp 0.5s steps(4) forwards;
+}
+
+.player.moving-right {
+  animation: moveRight 0.5s steps(4) forwards;
+}
+
+.player.moving-left {
+  animation: moveLeft 0.5s steps(4) forwards;
+}
+
+.player.idle-down {
+  animation: idleAnimationDown 1s steps(1) infinite;
+}
+
+.player.idle-up {
+  animation: idleAnimationUp 1s steps(1) infinite;
+}
+
+.player.idle-right {
+  animation: idleAnimationRight 1s steps(1) infinite;
+}
+
+.player.idle-left {
+  animation: idleAnimationLeft 1s steps(1) infinite;
+}
+
+@keyframes idleAnimationDown {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes idleAnimationUp {
+  from {
+    background-position: 0 -512px;
+  }
+  to {
+    background-position: 0 -512px;
+  }
+}
+
+@keyframes idleAnimationRight {
+  from {
+    background-position: 0 -1024px;
+  }
+  to {
+    background-position: 0 -1024px;
+  }
+}
+
+@keyframes idleAnimationLeft {
+  from {
+    background-position: 0 -1536px;
+  }
+  to {
+    background-position: 0 -1536px;
+  }
+}
+
+@keyframes moveDown {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -1400px 0;
+  }
+}
+
+@keyframes moveUp {
+  from {
+    background-position: 0 -512px;
+  }
+
+  to {
+    background-position: -1400px -512px;
+  }
+}
+
+@keyframes moveRight {
+  from {
+    background-position: 0 -1024px;
+  }
+
+  to {
+    background-position: -1400px -1024px;
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    background-position: 0 -1536px;
+  }
+
+  to {
+    background-position: -1400px -1536px;
+  }
+}
