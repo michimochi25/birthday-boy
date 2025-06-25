@@ -17,9 +17,50 @@ body {
   align-items: center;
   justify-content: center;
   border: 2px solid #fff;
+  position: relative;
+}
+
+.clock {
+  background-image: url("./assets/clock.png");
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 100;
+  position: absolute;
+  left: 60px;
+}
+
+.door {
+  background-image: url("./assets/door.png");
+  width: 50px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  z-index: 100;
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  transform: scaleX(1.2);
+}
+
+.bed {
+  background-image: url("./assets/bed.png");
+  width: 125px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: 100;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .floor-grid {
+  position: relative;
   display: grid;
   background-image: url("./assets/wooden_floor.jpg");
   background-size: cover;
@@ -30,6 +71,7 @@ body {
 }
 
 .wall-grid {
+  position: relative;
   display: grid;
   background-image: url("./assets/pink_wall.png");
   background-size: cover;
@@ -52,6 +94,7 @@ body {
 .game-row {
   display: flex;
   height: 30px;
+  position: relative;
 }
 
 .player {
@@ -59,10 +102,11 @@ body {
   height: 512px;
   background-image: url("./assets/character.png");
   background-repeat: no-repeat;
-  background-position: 0 0px; /* top-left frame */
+  background-position: 0 0px;
   animation: idleAnimationDown 1s steps(4) infinite;
   transform: scale(0.15);
   position: absolute;
+  z-index: 999;
 }
 
 .player.moving-down {

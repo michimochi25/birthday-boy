@@ -1,53 +1,48 @@
-function generateFloor() {
-  const cell = document.createElement("div");
-  cell.className = "floor-grid";
-  return cell;
-}
-
-function generateWall() {
-  const cell = document.createElement("div");
-  cell.className = "wall-grid";
-  return cell;
-}
-
-function generateConcrete() {
-  const cell = document.createElement("div");
-  cell.className = "concrete-grid";
-  return cell;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const rows = document.getElementsByClassName("game-row");
-
-  for (let i = 0; i < 10; i++) {
-    rows[0].appendChild(generateWall());
-    rows[1].appendChild(generateWall());
-    rows[2].appendChild(generateWall());
-    rows[3].appendChild(generateFloor());
-    rows[4].appendChild(generateFloor());
-    rows[5].appendChild(generateFloor());
-    rows[6].appendChild(generateFloor());
-    rows[7].appendChild(generateFloor());
-  }
-});
-
 // Player movement logic
+const gameContainer = document.getElementById("game-container");
+
+const TOP_Y_LIMIT = -194;
+const BOTTOM_Y_LIMIT = -54;
+const LEFT_X_LIMIT = -152;
+const RIGHT_X_LIMIT = 105;
+
+function canMoveTo(x, y) {
+  console.log(`Checking position: x=${x}, y=${y}`);
+  return (
+    y > TOP_Y_LIMIT && // Assuming player height is 50px
+    y < BOTTOM_Y_LIMIT &&
+    x > LEFT_X_LIMIT && // Assuming player width is 50px
+    x < RIGHT_X_LIMIT
+  );
+}
+
 const player = document.getElementsByClassName("player")[0];
 document.addEventListener("keydown", (event) => {
-  const key = event.key;
-  const currentRow = player.parentElement;
-  let nextCell;
+  event.preventDefault();
 
+  const key = event.key;
   player.classList = "player"; // Reset player classes
 
   if (key === "ArrowUp") {
     player.classList.add("moving-up");
+    if (canMoveTo(player.offsetLeft, player.offsetTop - 2)) {
+      player.style.top = `${player.offsetTop - 2}px`;
+    }
   } else if (key === "ArrowDown") {
     player.classList.add("moving-down");
+    if (canMoveTo(player.offsetLeft, player.offsetTop + 2)) {
+      player.style.top = `${player.offsetTop + 2}px`;
+    }
   } else if (key === "ArrowLeft") {
     player.classList.add("moving-left");
+    if (canMoveTo(player.offsetLeft - 2, player.offsetTop)) {
+      player.style.left = `${player.offsetLeft - 2}px`;
+    }
   } else if (key === "ArrowRight") {
     player.classList.add("moving-right");
+    if (canMoveTo(player.offsetLeft + 2, player.offsetTop)) {
+      player.style.left = `${player.offsetLeft + 2}px`;
+    }
   }
 
   player.addEventListener("animationend", (e) => {
