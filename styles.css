@@ -4,7 +4,8 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  font-family: "Arial", sans-serif;
+  font-family: "Pixelify Sans", sans-serif;
+  color: white;
   background-color: rgb(35, 17, 2);
   display: flex;
   align-items: center;
@@ -164,6 +165,18 @@ body {
   display: flex;
   height: 30px;
   position: relative;
+}
+
+.top-row {
+  border-top: solid 2px white;
+}
+
+.dialogue {
+  width: calc(100% - 20px);
+  height: 60px;
+  padding: 10px;
+  line-height: 5px;
+  background-color: black;
 }
 
 .player {

@@ -42,26 +42,31 @@ document.addEventListener("keydown", (event) => {
   const key = event.key;
   player.classList = "player"; // Reset player classes
 
-  if (key === "ArrowUp") {
-    player.classList.add("moving-up");
-    if (canMoveTo(player.offsetLeft, player.offsetTop - 2)) {
-      player.style.top = `${player.offsetTop - 2}px`;
-    }
-  } else if (key === "ArrowDown") {
-    player.classList.add("moving-down");
-    if (canMoveTo(player.offsetLeft, player.offsetTop + 2)) {
-      player.style.top = `${player.offsetTop + 2}px`;
-    }
-  } else if (key === "ArrowLeft") {
-    player.classList.add("moving-left");
-    if (canMoveTo(player.offsetLeft - 2, player.offsetTop)) {
-      player.style.left = `${player.offsetLeft - 2}px`;
-    }
-  } else if (key === "ArrowRight") {
-    player.classList.add("moving-right");
-    if (canMoveTo(player.offsetLeft + 2, player.offsetTop)) {
-      player.style.left = `${player.offsetLeft + 2}px`;
-    }
+  switch (key) {
+    case "ArrowUp":
+      player.classList.add("moving-up");
+      if (canMoveTo(player.offsetLeft, player.offsetTop - 2)) {
+        player.style.top = `${player.offsetTop - 2}px`;
+      }
+      break;
+    case "ArrowDown":
+      player.classList.add("moving-down");
+      if (canMoveTo(player.offsetLeft, player.offsetTop + 2)) {
+        player.style.top = `${player.offsetTop + 2}px`;
+      }
+      break;
+    case "ArrowLeft":
+      player.classList.add("moving-left");
+      if (canMoveTo(player.offsetLeft - 2, player.offsetTop)) {
+        player.style.left = `${player.offsetLeft - 2}px`;
+      }
+      break;
+    case "ArrowRight":
+      player.classList.add("moving-right");
+      if (canMoveTo(player.offsetLeft + 2, player.offsetTop)) {
+        player.style.left = `${player.offsetLeft + 2}px`;
+      }
+      break;
   }
 
   player.addEventListener("animationend", (e) => {
