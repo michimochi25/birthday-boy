@@ -46,6 +46,24 @@ function createWindow() {
   return w;
 }
 
+function createDesk() {
+  const desk = document.createElement("div");
+  desk.className = "desk";
+  return desk;
+}
+
+function createWardrobe() {
+  const wardrobe = document.createElement("div");
+  wardrobe.className = "wardrobe";
+  return wardrobe;
+}
+
+function createCake() {
+  const cake = document.createElement("div");
+  cake.className = "cake";
+  return cake;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const rows = document.getElementsByClassName("game-row");
 
@@ -57,9 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (i === 3) rows[0].appendChild(createWindow());
     rows[1].appendChild(generateWall());
     rows[2].appendChild(generateWall());
+    if (i === 3) rows[2].appendChild(createDesk());
+    if (i === 3) rows[2].appendChild(createWardrobe());
     rows[3].appendChild(generateFloor());
     rows[4].appendChild(generateFloor());
     rows[5].appendChild(generateFloor());
+    if (i === 9) rows[6].appendChild(createCake());
     rows[6].appendChild(generateFloor());
     rows[7].appendChild(generateFloor());
     if (i === 9) rows[7].appendChild(createBed());
