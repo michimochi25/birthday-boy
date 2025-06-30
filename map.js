@@ -1,3 +1,5 @@
+import texts from "./texts.js";
+
 function generateFloor() {
   const cell = document.createElement("div");
   cell.className = "floor-grid";
@@ -84,5 +86,50 @@ document.addEventListener("DOMContentLoaded", () => {
     rows[6].appendChild(generateFloor());
     rows[7].appendChild(generateFloor());
     if (i === 9) rows[7].appendChild(createBed());
+  }
+});
+
+const txt = texts.opening;
+const box = document.getElementById("dialogue");
+let i = 0;
+function typewriter() {
+  if (i < txt.length) {
+    box.innerText += txt.charAt(i);
+    i++;
+    setTimeout(typewriter, 50);
+  } else {
+    setTimeout(() => {
+      i = 0;
+      box.innerText = "";
+    }, 900);
+  }
+}
+
+const sound = document.getElementById("sound");
+const music = new Audio("./assets/Blue_Hour.mp3");
+const clickSound = new Audio("./assets/click_trimmed.mp3");
+music.volume = 0.05;
+clickSound.volume = 0.3;
+music.loop = true;
+
+document.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (sound.classList.contains("on")) {
+    music.play();
+  }
+  typewriter();
+});
+
+sound.addEventListener("click", (e) => {
+  e.preventDefault();
+  clickSound.play();
+  if (sound.classList.contains("on")) {
+    sound.classList.remove("on");
+    sound.classList.add("off");
+    music.pause();
+  } else {
+    sound.classList.remove("off");
+    sound.classList.add("on");
+    music.play();
   }
 });

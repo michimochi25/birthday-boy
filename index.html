@@ -12,6 +12,9 @@
 </head>
 
 <body>
+    <div id="menu">
+        <button id="sound" class="on"></button>
+    </div>
     <div id="game-container">
         <div class="player"></div>
         <div id="game-row-1" class="game-row"></div>
@@ -22,12 +25,11 @@
         <div id="game-row-6" class="game-row"></div>
         <div id="game-row-7" class="game-row"></div>
         <div id="game-row-8" class="game-row"></div>
-        <div class="dialogue top-row">
-            <p>Farelito: </p>
-            <p>Chilling...</p>
-        </div>
-        <script src="map.js"></script>
-        <script src="script.js"></script>
+        <div id="dialogue" class="dialogue top-row"></div>
+        <script src="texts.js" type="module"></script>
+        <script src="objects.js" type="module"></script>
+        <script src="map.js" type="module"></script>
+        <script src="script.js" type="module"></script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+import ITEMS_POSITIONS from "./objects.js";
+
 // Player movement logic
 const gameContainer = document.getElementById("game-container");
 
@@ -5,22 +7,27 @@ const TOP_Y_LIMIT = -194;
 const BOTTOM_Y_LIMIT = -54;
 const LEFT_X_LIMIT = -152;
 const RIGHT_X_LIMIT = 105;
-const BED_X_LIMIT = -23;
-const BED_Y_LIMIT = -102;
 
-const ITEMS_POSITIONS = {
-  BED: { x: -23, y: -102 },
-};
+function parseMovement(str, curr) {
+  // format ex: lt12 or gt14
+  const sign = str.slice(0, 2);
+  const num = parseInt(str.slice(2));
+  if (sign.localeCompare("lt") === 0) {
+    return curr < num;
+  } else if (sign.localeCompare("gt") === 0) {
+    return curr > num;
+  }
+  return false;
+}
 
 function collidesWithObjects(x, y) {
   for (const item in ITEMS_POSITIONS) {
     const itemPos = ITEMS_POSITIONS[item];
-    if (Math.abs(x - itemPos.x) < 3 && Math.abs(y - itemPos.y) < 3) {
+    if (parseMovement(itemPos.x, x) && parseMovement(itemPos.y, y)) {
       console.log(`Collision with ${item} at x=${x}, y=${y}`);
       return true;
     }
   }
-  // return x >= BED_X_LIMIT && y >= BED_Y_LIMIT;
   return false;
 }
 

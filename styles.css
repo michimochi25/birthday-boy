@@ -8,8 +8,15 @@ body {
   color: white;
   background-color: rgb(35, 17, 2);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
 }
 
 #game-container {
@@ -177,6 +184,33 @@ body {
   padding: 10px;
   line-height: 5px;
   background-color: black;
+}
+
+#menu {
+  width: 300px;
+  display: flex;
+  justify-content: end;
+}
+
+#sound {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#sound.on {
+  background-image: url("./assets/sound_on.png");
+}
+
+#sound.off {
+  background-image: url("./assets/sound_off.png");
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .player {
