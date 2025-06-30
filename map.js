@@ -34,6 +34,18 @@ function createBed() {
   return bed;
 }
 
+function createShelf() {
+  const shelf = document.createElement("div");
+  shelf.className = "shelf";
+  return shelf;
+}
+
+function createWindow() {
+  const w = document.createElement("div");
+  w.className = "window";
+  return w;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const rows = document.getElementsByClassName("game-row");
 
@@ -41,6 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     rows[0].appendChild(generateWall());
     if (i === 1) rows[0].appendChild(createClock());
     if (i === 2) rows[0].appendChild(createDoor());
+    if (i === 3) rows[0].appendChild(createShelf());
+    if (i === 3) rows[0].appendChild(createWindow());
     rows[1].appendChild(generateWall());
     rows[2].appendChild(generateWall());
     rows[3].appendChild(generateFloor());

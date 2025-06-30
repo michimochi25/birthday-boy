@@ -32,6 +32,34 @@ body {
   left: 60px;
 }
 
+.shelf {
+  background-image: url("./assets/shelf.png");
+  width: 150px;
+  height: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 100;
+  position: absolute;
+  left: 90px;
+  top: 20px;
+  transform: scale(0.9);
+}
+
+.window {
+  background-image: url("./assets/window.png");
+  width: 80px;
+  height: 120px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 100;
+  position: absolute;
+  right: -6px;
+  top: -5px;
+  transform: scale(0.85);
+}
+
 .door {
   background-image: url("./assets/door.png");
   width: 50px;

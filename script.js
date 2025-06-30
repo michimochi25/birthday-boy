@@ -5,14 +5,33 @@ const TOP_Y_LIMIT = -194;
 const BOTTOM_Y_LIMIT = -54;
 const LEFT_X_LIMIT = -152;
 const RIGHT_X_LIMIT = 105;
+const BED_X_LIMIT = -23;
+const BED_Y_LIMIT = -102;
+
+const ITEMS_POSITIONS = {
+  BED: { x: -23, y: -102 },
+};
+
+function collidesWithObjects(x, y) {
+  for (const item in ITEMS_POSITIONS) {
+    const itemPos = ITEMS_POSITIONS[item];
+    if (Math.abs(x - itemPos.x) < 3 && Math.abs(y - itemPos.y) < 3) {
+      console.log(`Collision with ${item} at x=${x}, y=${y}`);
+      return true;
+    }
+  }
+  // return x >= BED_X_LIMIT && y >= BED_Y_LIMIT;
+  return false;
+}
 
 function canMoveTo(x, y) {
   console.log(`Checking position: x=${x}, y=${y}`);
   return (
-    y > TOP_Y_LIMIT && // Assuming player height is 50px
+    y > TOP_Y_LIMIT &&
     y < BOTTOM_Y_LIMIT &&
-    x > LEFT_X_LIMIT && // Assuming player width is 50px
-    x < RIGHT_X_LIMIT
+    x > LEFT_X_LIMIT &&
+    x < RIGHT_X_LIMIT &&
+    !collidesWithObjects(x, y)
   );
 }
 
