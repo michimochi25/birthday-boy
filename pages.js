@@ -1,9 +1,5 @@
 const pages = [
   {
-    pic: "assets/16.jpg",
-    text: "We were so tiny, happy and shiny",
-  },
-  {
     pic: "assets/1.jpeg",
     text: "Big boi carrying smol boi",
   },
@@ -69,7 +65,11 @@ const pages = [
   },
   {
     pic: "assets/18.jpg",
-    text: "You are more than what you think you are. You are capable of so much more than you can imagine.",
+    text: "This little boy has grown up now :) You are more than what you think you are. You are capable of so much more than you can imagine! And I hope everyone around you sees that too. Stay happy, stay healthy, and stay awesome.",
+  },
+  {
+    pic: "assets/16.jpg",
+    text: "Keep making goated art, keep being the best animator you can be, and keep being the best person you can be. Love ya <3",
   },
 ];
 
