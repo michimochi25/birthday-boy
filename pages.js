@@ -69,7 +69,7 @@ const pages = [
   },
   {
     pic: "assets/16.jpg",
-    text: "Keep making goated art, keep being the best animator you can be, and keep being the best person you can be. Love ya <3",
+    text: "Keep making goated art, keep being the best animator you can be, and keep being the best person you can be. Love ya, always <3",
   },
 ];
 
