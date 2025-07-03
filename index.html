@@ -16,6 +16,15 @@
         <button id="sound" class="on"></button>
     </div>
     <div id="game-container">
+        <div id="backdrop" class="hidden"></div>
+        <div id="book" class="hidden">
+            <div class="page-container">
+                <button id="left-arrow" class="arrow-btn"></button>
+                <img id="page-pic" src="" alt="photo">
+                <p id="page-text"></p>
+                <button id="right-arrow" class="arrow-btn"></button>
+            </div>
+        </div>
         <div class="player"></div>
         <div id="game-row-1" class="game-row"></div>
         <div id="game-row-2" class="game-row"></div>
@@ -25,7 +34,9 @@
         <div id="game-row-6" class="game-row"></div>
         <div id="game-row-7" class="game-row"></div>
         <div id="game-row-8" class="game-row"></div>
-        <div id="dialogue" class="dialogue top-row"></div>
+        <div id="dialogue" class="dialogue top-row">
+            <p id="textbox"></p>
+        </div>
         <script src="texts.js" type="module"></script>
         <script src="objects.js" type="module"></script>
         <script src="map.js" type="module"></script>

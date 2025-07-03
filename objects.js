@@ -1,4 +1,8 @@
 const ITEMS_POSITIONS = {
+  window: {
+    x: "gt45",
+    y: "lt-173",
+  },
   bed: {
     x: "gt-23",
     y: "gt-102",
@@ -7,7 +11,7 @@ const ITEMS_POSITIONS = {
     x: "gt-83",
     y: "gt-95",
   },
-  shelf: {
+  wardrobe: {
     x: "lt-109",
     y: "lt-81",
   },

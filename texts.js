@@ -1,5 +1,35 @@
 const TEXTS = {
-  opening: "Chilling...",
+  opening: ["Chilling..."],
+  cake: ["I'm turning 18 this year.."],
+  window: ["The weather is nice ain't it"],
+  desk: ["I didn't do anything productive today, and it's completely okay!"],
+  bed: ["What is that book on the shelf?"],
+  random: [
+    "You have a sense of good and bad, and you align with good",
+    "I think people don't understand why they feel certain ways and come to the wrong conclusion",
+    "Pretentious narratives that evoke feelings but have no use in discussion or introspection",
+    "I am enlightened",
+    "I have experience with being the average Twitter user",
+    "Forgiveness is not reconciliation, but rather overcoming resentment and hatred",
+    "I just wanna make cool drawings",
+    "She thinks butter and mentega are different",
+    "Struggling is normal",
+    "I (reluctantly) gave him all I had",
+    "Just got touched.. Pretty good..",
+    "Desu-innit?",
+    "Mr. PP was right, Saber is one of the most well written female character of all time",
+    "Women☕",
+    "I'm just kind of frustrated that most of the time conversations don't lead to a conclusion and just leaves both parties upset",
+    "I want to become an animator so I can work on music videos",
+    "Life is tough, but it's not gonna reward me for whining about it",
+  ],
+  wardrobe: ["Oh, there's an interesting book!"],
+  book: [
+    "I don't remember having this album before...",
+    `"I'm crying" as you would say`,
+    "Nice..",
+    "Good memories",
+  ],
 };
 
 export default TEXTS;

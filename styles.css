@@ -4,13 +4,17 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Pixelify Sans", monospace;
   color: white;
   background-color: rgb(35, 17, 2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.hidden {
+  display: none;
 }
 
 button {
@@ -179,11 +183,30 @@ button {
 }
 
 .dialogue {
-  width: calc(100% - 20px);
+  width: 300px;
   height: 60px;
-  padding: 10px;
   line-height: 5px;
   background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+#textbox {
+  margin: 0;
+  font-size: small;
+  padding: 10px;
+  width: calc(100% - 20px);
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 16px;
+}
+
+.option {
+  color: white;
+  font-family: "Pixelify Sans", monospace;
+  border: 2px solid white;
 }
 
 #menu {
@@ -213,6 +236,19 @@ button {
   background-position: center;
 }
 
+.hat {
+  position: absolute;
+  z-index: 200;
+  width: 150px;
+  height: 150px;
+  background-image: url("./assets/hat_2.png");
+  background-repeat: no-repeat;
+  background-position: 0 0px;
+  background-size: contain;
+  top: -99px;
+  left: 88px;
+}
+
 .player {
   width: 350px;
   height: 512px;
@@ -223,6 +259,8 @@ button {
   transform: scale(0.15);
   position: absolute;
   z-index: 200;
+  display: flex;
+  justify-content: center;
 }
 
 .player.moving-down {
@@ -331,4 +369,64 @@ button {
   to {
     background-position: -1400px -1536px;
   }
+}
+
+#backdrop {
+  position: absolute;
+  top: 0;
+  width: 300px;
+  height: 240px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 888;
+}
+
+#book {
+  background-image: url("./assets/open_book.png");
+  width: 280px;
+  height: 200px;
+  position: absolute;
+  top: 8%;
+  z-index: 999;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr 30px;
+  color: black;
+  justify-items: center;
+  align-items: center;
+}
+
+.arrow-btn {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 1000;
+}
+
+#left-arrow {
+  background-image: url("./assets/arrow_left.png");
+}
+
+#right-arrow {
+  background-image: url("./assets/arrow_right.png");
+}
+
+#book img {
+  max-width: 100px;
+  max-height: 130px;
+  object-fit: cover;
+}
+
+#page-text {
+  padding: 0 5px;
+  max-height: 150px;
+  overflow-y: auto;
 }

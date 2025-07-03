@@ -3,6 +3,10 @@ import ITEMS_POSITIONS from "./objects.js";
 // Player movement logic
 const gameContainer = document.getElementById("game-container");
 
+const state = {
+  collides: "random",
+};
+
 const TOP_Y_LIMIT = -194;
 const BOTTOM_Y_LIMIT = -54;
 const LEFT_X_LIMIT = -152;
@@ -24,10 +28,12 @@ function collidesWithObjects(x, y) {
   for (const item in ITEMS_POSITIONS) {
     const itemPos = ITEMS_POSITIONS[item];
     if (parseMovement(itemPos.x, x) && parseMovement(itemPos.y, y)) {
+      state.collides = item;
       console.log(`Collision with ${item} at x=${x}, y=${y}`);
       return true;
     }
   }
+  state.collides = "random";
   return false;
 }
 
@@ -92,3 +98,5 @@ document.addEventListener("keydown", (event) => {
     }
   });
 });
+
+export default state;

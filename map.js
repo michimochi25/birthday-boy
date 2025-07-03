@@ -1,4 +1,6 @@
 import texts from "./texts.js";
+import state from "./script.js";
+import pages from "./pages.js";
 
 function generateFloor() {
   const cell = document.createElement("div");
@@ -9,12 +11,6 @@ function generateFloor() {
 function generateWall() {
   const cell = document.createElement("div");
   cell.className = "wall-grid";
-  return cell;
-}
-
-function generateConcrete() {
-  const cell = document.createElement("div");
-  cell.className = "concrete-grid";
   return cell;
 }
 
@@ -89,40 +85,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const txt = texts.opening;
-const box = document.getElementById("dialogue");
+let txt = texts.opening[0];
+const box = document.getElementById("textbox");
 let i = 0;
 function typewriter() {
   if (i < txt.length) {
     box.innerText += txt.charAt(i);
     i++;
     setTimeout(typewriter, 50);
-  } else {
-    setTimeout(() => {
-      i = 0;
-      box.innerText = "";
-    }, 900);
   }
+}
+
+function callTypewriter() {
+  i = 0;
+  box.innerText = "";
+  typewriter();
 }
 
 const sound = document.getElementById("sound");
 const music = new Audio("./assets/Blue_Hour.mp3");
 const clickSound = new Audio("./assets/click_trimmed.mp3");
-music.volume = 0.05;
-clickSound.volume = 0.3;
+music.volume = 1;
+clickSound.volume = 0.8;
 music.loop = true;
 
-document.addEventListener("click", (e) => {
+const container = document.getElementById("game-container");
+container.addEventListener("click", (e) => {
   e.preventDefault();
   if (sound.classList.contains("on")) {
     music.play();
   }
-  typewriter();
+  randomiseText();
 });
 
 sound.addEventListener("click", (e) => {
   e.preventDefault();
-  clickSound.play();
   if (sound.classList.contains("on")) {
     sound.classList.remove("on");
     sound.classList.add("off");
@@ -131,5 +128,128 @@ sound.addEventListener("click", (e) => {
     sound.classList.remove("off");
     sound.classList.add("on");
     music.play();
+  }
+});
+
+function createPickUpBtn() {
+  const btn = document.createElement("button");
+  btn.id = "pick-up-btn";
+  btn.classList.add("option");
+  btn.innerText = "Pick up";
+  return btn;
+}
+
+function createCloseBtn() {
+  const btn = document.createElement("button");
+  btn.id = "close-btn";
+  btn.classList.add("option");
+  btn.innerText = "X Close";
+  return btn;
+}
+
+function randomiseText() {
+  const txtArray = texts[state.collides];
+  txt = txtArray[Math.floor(Math.random() * txtArray.length)];
+  callTypewriter();
+}
+
+document.addEventListener("keydown", (event) => {
+  event.preventDefault();
+  const key = event.key;
+  switch (key) {
+    case "Enter":
+      const collision = state.collides;
+      const dialogue = document.getElementById("dialogue");
+      const options = document.getElementsByClassName("option");
+      if (collision.localeCompare("wardrobe") === 0) {
+        const btn = createPickUpBtn();
+        if (options.length === 0) {
+          dialogue.appendChild(btn);
+        }
+
+        const bd = document.getElementById("backdrop");
+        const book = document.getElementById("book");
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          bd.classList.remove("hidden");
+          book.classList.remove("hidden");
+          state.collides = "book";
+          randomiseText();
+          btn.remove();
+
+          // build next options
+          const closeBtn = createCloseBtn();
+          dialogue.appendChild(closeBtn);
+          closeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            bd.classList.add("hidden");
+            book.classList.add("hidden");
+            closeBtn.remove();
+            txt = texts.opening[0];
+          });
+        });
+      } else {
+        const pickUpBtn = document.getElementById("pick-up-btn");
+        if (pickUpBtn) {
+          // if element exists, destroy it
+          pickUpBtn.remove();
+        }
+      }
+
+      if (collision.localeCompare("cake") === 0) {
+        const player = document.getElementsByClassName("player")[0];
+        const head = player.offsetTop + 20;
+        const hat = document.createElement("div");
+        hat.className = "hat";
+        player.appendChild(hat);
+        const hornSound = new Audio("./assets/party_horn_trimmed.mp3");
+        hornSound.play();
+      }
+
+      randomiseText();
+      break;
+  }
+});
+
+const buttons = document.getElementsByTagName("button");
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", (e) => {
+    clickSound.play();
+  });
+}
+
+// navigate pages
+const leftArrow = document.getElementById("left-arrow");
+const rightArrow = document.getElementById("right-arrow");
+const pagePic = document.getElementById("page-pic");
+const pageText = document.getElementById("page-text");
+let currentPage = 0;
+
+function updatePage() {
+  console.log("Updating page to:", currentPage);
+  pagePic.src = pages[currentPage].pic;
+  pageText.innerText = pages[currentPage].text;
+}
+
+leftArrow.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (currentPage > 0) {
+    currentPage--;
+    updatePage();
+  }
+});
+
+rightArrow.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    updatePage();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize the first page
+  if (pages.length > 0) {
+    updatePage();
   }
 });
